@@ -50,10 +50,8 @@ select employee.*,jobs.max_salary from employee,jobs where employee.job_id = job
 
 -- 14 Fetch all details of top 3 highly paid employees who are in department Shipping and IT
 select * from departments;
-select top 3 * from employee where department_id in (select department_id from departments where department_name = 'Shipping') 
-union
-select top 3 * from employee where department_id in (select department_id from departments where department_name = 'IT')
-order by department_id,salary desc;
+select top 3 * from employee where department_id in (select department_id from departments where department_name in ('Shipping', 'IT'))
+order by salary desc;
 
 -- 15 Display employee id and the positions(jobs) held by that employee (including the current position)
 select employee.employee_id,jobs.job_title from employee,jobs where employee.job_id  = jobs.job_id
